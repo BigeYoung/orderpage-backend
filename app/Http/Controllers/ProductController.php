@@ -18,8 +18,6 @@ class ProductController extends Controller
 
     function processList()
     {
-        DB::enableQueryLog(); // Enable query log
-
         $products = Product::with("order")
             ->with("features")
             ->with("operations")
@@ -32,8 +30,6 @@ class ProductController extends Controller
 
     function doneList()
     {
-        DB::enableQueryLog(); // Enable query log
-
         $products = Product::with("order")
             ->with("features")
             ->with("operations")
@@ -42,6 +38,18 @@ class ProductController extends Controller
             })
             ->get();
 
+        return response()->json(["products" => $products]);
+    }
+
+    function info($product_guid)
+    {
+        DB::enableQueryLog();
+
+        $products = Product::where("guid", $product_guid)
+            ->with("order")
+            ->with("features")
+            ->with("operations")
+            ->first();
         return response()->json(["products" => $products]);
     }
 }
