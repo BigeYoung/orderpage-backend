@@ -11,8 +11,8 @@ class ProductController extends Controller
 {
     function count()
     {
-        $process = DB::select('select count(DISTINCT product_guid) as count from operations join products on product_guid=products.guid where `status`!="done";')[0]->count;
-        $done = DB::select('select count(distinct product_guid) as count from operations where product_guid not in (select distinct product_guid from operations where `status`!="done");')[0]->count;
+        $process = DB::select('select count(DISTINCT product_guid) as count from operations join products on product_guid=products.guid where `operations`.`status`!="done";')[0]->count;
+        $done = DB::select('select count(distinct product_guid) as count from operations where product_guid not in (select distinct product_guid from operations where `operations`.`status`!="done");')[0]->count;
         return response()->json(['process' => $process, 'done' => $done]);
     }
 
