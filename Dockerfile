@@ -9,5 +9,6 @@ RUN composer config -g repo.packagist composer https://packagist.phpcomposer.com
 RUN mv .env.example .env \
     && sed -ri -e 's!/var/www/html!/var/www/html/public!g' /etc/apache2/sites-available/000-default.conf \
     && a2enmod rewrite \ 
+    && mkdir /var/www/html/storage/aml \
     && chown -R www-data:www-data /var/www/html \
     && chmod -R 775 /var/www/html/storage 
