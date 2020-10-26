@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class OrderController extends Controller
 {
@@ -79,6 +80,8 @@ class OrderController extends Controller
             ];
         }
 
+        $response = Http::put('http://product-reactor/product_reactor', $request);
+
         // $path = base_path('resources') . '/aml/product_' . $request->values['product_name'] . '.aml.xml';
         // $content = file_get_contents($path);
 
@@ -100,6 +103,6 @@ class OrderController extends Controller
         // $path = base_path('storage') . '/aml/' . $product->guid . ".aml";
         // file_put_contents($path, $content);
 
-        return response()->json([' $created_at' => $created_at]);
+        return $response;
     }
 }
