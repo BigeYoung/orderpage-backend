@@ -26,11 +26,13 @@ class OrderController extends Controller
         $product->order_id = $order->id;
         $product->save();
 
+        $p_name = str_replace("Box_", "", $product_name);
+
         $features = [
             ["Box,Upper,Pallet", $box_color],
-            ["UDisk,Upper,Pallet", null],
+            [$p_name.",Upper,Pallet", null],
             [strpos($product_name, "UDisk") ? "Lasering,Upper,UDisk" : "Carving,Upper,Wood", $pic],
-            ["UDisk,Inside,Box", null],
+            [$p_name.",Inside,Box", null],
             ["Cover,Upper,Box", $cover_color],
             ["Box,Under,Pallet", null],
         ];

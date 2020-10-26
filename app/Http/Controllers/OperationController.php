@@ -15,7 +15,6 @@ class OperationController extends Controller
             $a = array_combine($operations[0], $a);
         });
         array_shift($operations);
-
         foreach ($operations as $o) {
             $operation = new Operation;
             $operation->product_guid = $product_guid;
@@ -23,7 +22,7 @@ class OperationController extends Controller
             $operation->name = $o['name'];
             if (array_key_exists($o['name'], $replace))
                 $operation->param = $replace[$o['name']];
-            else
+            else if (!empty($o['param']) && !ctype_space($o['param']))
                 $operation->param = $o['param'];
             $operation->save();
         }

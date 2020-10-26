@@ -4,10 +4,10 @@ equipment_guid,name,param
 24461a2c-b0cf-4f4e-8bda-a3b523ef3c5b,Operation_LM,2
 a5197017-c560-4713-aacd-01f097dda18f,Operation_switch,1
 5509aade-0b05-45a3-b7be-d0569972204e,Operation_pick2CNC,
-c5e616d2-89de-4e91-be05-f7111e06fb92,Operation_machine,{sds:"test1.nc"}
+c5e616d2-89de-4e91-be05-f7111e06fb92,Operation_machine,"{""sds"":""test1.nc""}"
 5509aade-0b05-45a3-b7be-d0569972204e,Operation_pick2pallet,
 40d093ac-cc17-4e03-bf18-e6778cd54667,Operation_package,
 75292a01-6d17-4d50-bb75-d42718f75fe8,Operation_switch,2
 7f698a28-d9d4-456a-9814-19d6c9b2f1a1,Operation_switch,1
 dedccdfb-afdf-4f60-a9b7-1c88deb106c5,Operation_LC,3
-95243742-5e4c-4c5a-b16e-0d94c673b888,Operation_UB,
+95243742-5e4c-4c5a-b16e-0d94c673b87e,Operation_UB,
