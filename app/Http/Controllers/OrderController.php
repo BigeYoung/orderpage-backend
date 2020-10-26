@@ -80,7 +80,7 @@ class OrderController extends Controller
             ];
         }
 
-        $response = Http::put('http://product-reactor:9090/product_reactor', json_encode($request));
+        $response = Http::put('http://product-reactor:9090/product_reactor', $request);
 
         // $path = base_path('resources') . '/aml/product_' . $request->values['product_name'] . '.aml.xml';
         // $content = file_get_contents($path);
