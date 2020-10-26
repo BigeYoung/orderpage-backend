@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class OperationController extends Controller
 {
-    static function add_operations(string $filename, string $product_guid)
+    static function add_operations(string $filename, string $product_guid, array $replace = array())
     {
         $path = base_path('resources') . "/operations/$filename.csv";
         $operations = array_map('str_getcsv', file($path));
@@ -21,7 +21,10 @@ class OperationController extends Controller
             $operation->product_guid = $product_guid;
             $operation->equipment_guid = $o['equipment_guid'];
             $operation->name = $o['name'];
-            $operation->param = $o['param'];
+            if (array_key_exists($o['name'], $replace))
+                $operation->param = $replace[$o['name']];
+            else
+                $operation->param = $o['param'];
             $operation->save();
         }
     }
