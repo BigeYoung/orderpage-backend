@@ -19,6 +19,7 @@ Route::get('/count', 'App\Http\Controllers\ProductController@count');
 Route::get('/products/process', 'App\Http\Controllers\ProductController@processList');
 Route::get('/products/done', 'App\Http\Controllers\ProductController@doneList');
 Route::get('/products/info/{product_guid}', 'App\Http\Controllers\ProductController@info');
+Route::get('/products/pallet/{product_guid}', 'App\Http\Controllers\ProductController@pallet');
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();

@@ -6,6 +6,7 @@ use App\Models\Product;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Http;
 
 class ProductController extends Controller
 {
@@ -43,13 +44,21 @@ class ProductController extends Controller
 
     function info($product_guid)
     {
-        DB::enableQueryLog();
-
         $products = Product::where("guid", $product_guid)
             ->with("order")
             ->with("features")
             ->with("operations")
             ->first();
         return response()->json(["products" => $products]);
+    }
+
+    function pallet($pallet_guid)
+    {
+        $response = Http::get("http://192.168.137.121:8500/v1/catalog/service/".$pallet_guid."?dc=dc1");
+        $Address = $response[0]["Address"];
+        $ServicePort = $response[0]["ServicePort"];
+        $PortValid = is_resource(@fsockopen($Address, $ServicePort));
+        $ProductID = $response[0]["ServiceMeta"]["ProductID"];
+        return response()->json(["Address" => $Address, "ServicePort" => $ServicePort, "PortValid" => $PortValid, "ProductID" => $ProductID]);
     }
 }
