@@ -64,7 +64,8 @@ class OrderController extends Controller
             ];
         } elseif ($product->name == "Box_Wood") {
             OperationController::add_operations(
-                "Box_Wood_CNC" . random_int(1, 2),
+                "Box_Wood_CNC2",
+                // TODO "Box_Wood_CNC" . random_int(1, 2),
                 $product->guid,
                 ["Operation_LB" => $request->box_idx, "Operation_LC" => $request->cover_idx]
             );
