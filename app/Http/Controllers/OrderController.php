@@ -59,13 +59,12 @@ class OrderController extends Controller
                 "__PRODUCT_GUID__" => $product->guid,
                 "__ORDER_ID__" => $product->order_id,
                 "__FEATURE_1__" => $request->box_idx,
-                "__FEATURE_3__" => "{sds:'test1.nc'}",
+                "__FEATURE_3__" => "test1.nc",
                 "__FEATURE_5__" => $request->cover_idx
             ];
         } elseif ($product->name == "Box_Wood") {
             OperationController::add_operations(
-                "Box_Wood_CNC2",
-                // TODO "Box_Wood_CNC" . random_int(1, 2),
+                "Box_Wood_CNC" . random_int(1, 2),
                 $product->guid,
                 ["Operation_LB" => $request->box_idx, "Operation_LC" => $request->cover_idx]
             );
