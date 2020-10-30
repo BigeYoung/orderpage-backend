@@ -54,11 +54,12 @@ class ProductController extends Controller
 
     function pallet($pallet_guid)
     {
-        $response = Http::get("http://192.168.137.121:8500/v1/catalog/service/pallet", ['filter' => 'ServiceID=="11fb0bcd-3c2a-8c3d-d4b4-b68bbbb67bf9"']);
+        $response = Http::get("http://192.168.137.121:8500/v1/catalog/service/pallet", ['filter' => 'ServiceID=="'.$pallet_guid.'"']);
+        $Node = $response[0]["Node"];
         $Address = $response[0]["Address"];
         $ServicePort = $response[0]["ServicePort"];
         $PortValid = is_resource(@fsockopen($Address, $ServicePort));
         $ProductID = $response[0]["ServiceMeta"]["ProductID"];
-        return response()->json(["Address" => $Address, "ServicePort" => $ServicePort, "PortValid" => $PortValid, "ProductID" => $ProductID]);
+        return response()->json(["Address" => $Address, "ServicePort" => $ServicePort, "PortValid" => $PortValid, "ProductID" => $ProductID, "Node" => $Node]);
     }
 }
