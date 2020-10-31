@@ -1,7 +1,7 @@
 equipment_guid,name,param
 19f497d8-b104-4879-b6c3-e37e510f07c2,Operation_LB,3
 7f698a28-d9d4-456a-9814-19d6c9b2f1a1,Operation_switch,2
-24461a2c-b0cf-4f4e-8bda-a3b523ef3c5b,Operation_LM,2
+24461a2c-b0cf-4f4e-8bda-a3b523ef3c5b,Operation_LM,1
 a5197017-c560-4713-aacd-01f097dda18f,Operation_switch,1
 5509aade-0b05-45a3-b7be-d0569972204e,Operation_pick2CNC,
 c5e616d2-89de-4e91-be05-f7111e06fb92,Operation_machine,test1.nc
