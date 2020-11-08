@@ -103,6 +103,6 @@ class OrderController extends Controller
         // $path = base_path('storage') . '/aml/' . $product->guid . ".aml";
         // file_put_contents($path, $content);
 
-        return $response;
+        return response($response->body(), $response->status());
     }
 }
