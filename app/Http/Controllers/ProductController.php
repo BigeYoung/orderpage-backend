@@ -54,7 +54,9 @@ class ProductController extends Controller
 
     function pallet($pallet_guid)
     {
-        $response = Http::get("http://192.168.137.121:8500/v1/catalog/service/pallet", ['filter' => 'ServiceID=="'.$pallet_guid.'"']);
+        $response = Http::get("http://192.168.137.121:8500/v1/catalog/service/pallet", ['filter' => 'ServiceID=="'.$pallet_guid.'"', 'dc' => 'dc1']);
+        if (empty($response->json()))
+            return response('托盘未注册。', 404);
         $Node = $response[0]["Node"];
         $Address = $response[0]["Address"];
         $ServicePort = $response[0]["ServicePort"];
